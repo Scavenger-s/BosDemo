@@ -85,7 +85,31 @@
 		});
 		
 		$("#btnEp").click(function(){
-			alert("修改密码");
+			//进行表单校验
+			var v = $("#editPasswordForm").form("validate");
+			if(v){
+				//校验通过，手动校验两次输入一致
+				var v1 = $("#txtNewPass").val();
+				var v2 = $("#txtRePass").val();
+				if(v1 == v2){
+					//两次输入一致
+					$.post("userAction_editPassword.action",
+							{"password":v1},
+							function(data){
+								if(data == '1'){
+									//修改成功，关闭修改密码窗口
+									$("#editPwdWindow").window("close");
+								}else{
+									//修改密码失败，弹出提示
+									$.messager.alert("提示信息","密码修改失败！","error");
+								}
+							});
+					
+				}else{
+					$.messager.alert("提示信息","两次密码不一致","warning");
+				}
+			}
+			
 		});
 	});
 
@@ -228,6 +252,7 @@
         background: #fafafa">
         <div class="easyui-layout" fit="true">
             <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+                <form id="editPasswordForm">
                 <table cellpadding=3>
                        <tr>
                         <td>新密码：</td>
@@ -238,6 +263,7 @@
 	                    <td><input required="true" data-options="validType:'length[4,6]'" id="txtRePass" type="Password" class="txt01 easyui-validatebox" /></td>
                 		</tr>
                 </table>
+                </form>
             </div>
             <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
                 <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)" >确定</a> 
