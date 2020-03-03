@@ -60,6 +60,41 @@ public class StaffAction extends BaseAction<Staff> {
 		ServletActionContext.getResponse().getWriter().print(json);
 		return NONE;
 	}
+	
+	//属性驱动
+	private String ids;
+	public String getIds() {
+		return ids;
+	}
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+	/**
+	 * 取派员批量删除
+	 * @return
+	 */
+	public String deleteBatch() {
+		
+		staffService.deleteBatch(ids);
+		return "list";
+	}
+	
+	/**
+	 * 修改取派员信息
+	 * @return
+	 */
+	public String edit() {
+		
+		Staff staff = staffService.findById(model.getId());
+		//使用页面提交的数据进行覆盖
+		staff.setName(model.getName());
+		staff.setTelephone(model.getTelephone());
+		staff.setHaspda(model.getHaspda());
+		staff.setStandard(model.getStandard());
+		staff.setStation(model.getStation());
+		staffService.update(staff);
+		return "list";
+	}
 	public int getPage() {
 		return page;
 	}
@@ -72,4 +107,5 @@ public class StaffAction extends BaseAction<Staff> {
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
+	
 }

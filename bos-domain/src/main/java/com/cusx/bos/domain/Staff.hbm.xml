@@ -32,4 +32,8 @@
             <one-to-many class="com.cusx.bos.domain.Decidedzone" />
         </set>
     </class>
+    <!-- 取派员逻辑删除 -->
+    <query name="staff.delete">
+    	UPDATE Staff SET deltag = '1' WHERE id = ?
+    </query>
 </hibernate-mapping>
