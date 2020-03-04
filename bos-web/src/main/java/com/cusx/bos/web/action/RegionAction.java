@@ -12,6 +12,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,12 @@ import com.cusx.bos.service.IRegionService;
 import com.cusx.bos.service.IUserService;
 
 import com.cusx.bos.utils.BOSUtils;
+import com.cusx.bos.utils.PageBean;
 import com.cusx.bos.utils.PinYin4jUtils;
 import com.cusx.bos.web.action.base.BaseAction;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 
 
@@ -35,6 +40,7 @@ public class RegionAction extends BaseAction<Region> {
 	private List<Region> regionList = new ArrayList<Region>();
 	@Autowired
 	private IRegionService regionService;
+	
 	
 	public void setRegionFile(File regionFile) {
 		this.regionFile = regionFile;
@@ -76,6 +82,39 @@ public class RegionAction extends BaseAction<Region> {
 			
 		}
 		regionService.saveBatch(regionList);
+		return NONE;
+	}
+	
+	/**
+	 * 分页查询区域
+	 * @throws IOException 
+	 */
+	public String pageQuery() throws IOException {
+		regionService.pageQuery(pageBean);
+		this.java2Json(pageBean, 
+					new String[]{"currentPage","detachedCriteria","pageSize","subareas"});
+		return NONE;
+	}
+	private String q;
+	public String getQ() {
+		return q;
+	}
+	public void setQ(String q) {
+		this.q = q;
+	}
+	/**
+	 * 查询所有区域，返回json数据
+	 * @return
+	 */
+	public String listajax() {
+		List<Region> list = null;
+		if(StringUtils.isNotBlank(q)){
+			list = regionService.findListByQ(q);
+		}else{
+			list = regionService.findAll();
+		}
+		this.java2Json(list, new String[]{"subareas"});
+		
 		return NONE;
 	}
 }
