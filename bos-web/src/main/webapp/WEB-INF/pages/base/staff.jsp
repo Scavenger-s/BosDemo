@@ -190,9 +190,8 @@
 	function doDblClickRow(rowIndex, rowData){
 		//打开修改取派员窗口
 		$('#editStaffWindow').window("open");
-		
 		//使用form表单对象的load方法回显数据
-		$("#editStaffForm").form("load",rowData);  
+		$("#editStaffForm").form("load",rowData);
 	}
 </script>	
 </head>

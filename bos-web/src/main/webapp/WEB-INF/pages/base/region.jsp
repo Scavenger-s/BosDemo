@@ -26,6 +26,7 @@
 <script
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.ocupload-1.1.2.js"></script>
 <script type="text/javascript">
 	function doAdd(){
 		$('#addRegionWindow').window("open");
@@ -99,7 +100,6 @@
 	$(function(){
 		// 先将body隐藏，再显示，不会出现页面刷新效果
 		$("body").css({visibility:"visible"});
-		
 		// 收派标准数据表格
 		$('#grid').datagrid( {
 			iconCls : 'icon-forward',
@@ -116,6 +116,11 @@
 			onDblClickRow : doDblClickRow
 		});
 		
+		//页面加载完成后，调用OCUpload插件的方法
+		$("#button-import").upload({
+			action:'regionAction_importXls.action',
+			name:'regionFile'
+		});
 		// 添加、修改区域窗口
 		$('#addRegionWindow').window({
 	        title: '添加修改区域',

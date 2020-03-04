@@ -19,4 +19,5 @@ public interface IBaseDao<T> {
 	public List<T> findAll();
 	public	void executeUpdate(String queryName, Object...objs);
 	public void pageQuery(PageBean pageBean);
+	public void saveOrUpdate(T entity);
 }
