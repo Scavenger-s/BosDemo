@@ -54,7 +54,7 @@ public class StaffAction extends BaseAction<Staff> {
 		
 		JsonConfig jsonConfig = new JsonConfig();
 		//指定哪些属性不需要转json
-		jsonConfig.setExcludes(new String[]{"currentPage","detachedCriteria","pageSize"});
+		jsonConfig.setExcludes(new String[]{"decidedzones","currentPage","detachedCriteria","pageSize"});
 		String json = JSONObject.fromObject(pageBean,jsonConfig).toString();
 		
 		ServletActionContext.getResponse().setContentType("text/json;charset=utf-8");
