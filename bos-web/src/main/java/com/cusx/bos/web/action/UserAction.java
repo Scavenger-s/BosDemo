@@ -1,6 +1,7 @@
 package com.cusx.bos.web.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -12,6 +13,8 @@ import com.cusx.bos.domain.User;
 import com.cusx.bos.service.IUserService;
 import com.cusx.bos.utils.BOSUtils;
 import com.cusx.bos.web.action.base.BaseAction;
+import com.cusx.crm.service.Customer;
+import com.cusx.crm.service.ICustomerService;
 
 
 
@@ -31,6 +34,8 @@ public class UserAction extends BaseAction<User> {
 	 * 用户登录
 	 */
 	public String login(){
+		
+		
 		//从Session中获取生成的验证码
 		String validatecode = (String) ServletActionContext.getRequest().getSession().getAttribute("key");
 		//校验验证码是否输入正确
