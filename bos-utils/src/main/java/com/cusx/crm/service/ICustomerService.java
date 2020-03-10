@@ -19,10 +19,24 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(name = "ICustomerService", targetNamespace = "http://service.crm.cusx.com/")
 @XmlSeeAlso({
-    //ObjectFactory.class
+    
 })
 public interface ICustomerService {
 
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findDecidedzoneIdByAddress", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindDecidedzoneIdByAddress")
+    @ResponseWrapper(localName = "findDecidedzoneIdByAddressResponse", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindDecidedzoneIdByAddressResponse")
+    public String findDecidedzoneIdByAddress(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
@@ -59,6 +73,20 @@ public interface ICustomerService {
     @RequestWrapper(localName = "findListNotAssociation", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindListNotAssociation")
     @ResponseWrapper(localName = "findListNotAssociationResponse", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindListNotAssociationResponse")
     public List<Customer> findListNotAssociation();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.cusx.crm.service.Customer
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findCustomerByTelephone", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindCustomerByTelephone")
+    @ResponseWrapper(localName = "findCustomerByTelephoneResponse", targetNamespace = "http://service.crm.cusx.com/", className = "com.cusx.crm.service.FindCustomerByTelephoneResponse")
+    public Customer findCustomerByTelephone(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
