@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 
+import com.cusx.bos.domain.Staff;
 import com.cusx.bos.utils.PageBean;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -82,12 +83,12 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 	//在构造方法中动态获取实体类型，通过反射创建model对象
 	public BaseAction() {
 		ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();
-		//获得BaseAction上声明的泛型数组
+		
 		Type[] actualTypeArguments = genericSuperclass.getActualTypeArguments();
 		Class<T> entityClass = (Class<T>) actualTypeArguments[0];
 		detachedCriteria = DetachedCriteria.forClass(entityClass);
 		pageBean.setDetachedCriteria(detachedCriteria);
-		//通过反射创建对象
+		
 		try {
 			model = entityClass.newInstance();
 		} catch (InstantiationException e) {

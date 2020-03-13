@@ -1,5 +1,6 @@
 package com.cusx.bos.service.impl;
 
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +11,17 @@ import com.cusx.bos.dao.IRoleDao;
 import com.cusx.bos.domain.Function;
 import com.cusx.bos.domain.Role;
 import com.cusx.bos.service.IRoleService;
-
+import com.cusx.bos.utils.PageBean;
 @Service
 @Transactional
 public class RoleServiceImpl implements IRoleService {
 	@Autowired
-	private IRoleDao roleDao;
-	@Override
+	private IRoleDao dao;
+	/**
+	 * 保存一个角色，同时还需要关联权限
+	 */
 	public void save(Role role, String functionIds) {
-		roleDao.save(role);
+		dao.save(role);
 		if(StringUtils.isNotBlank(functionIds)){
 			String[] fIds = functionIds.split(",");
 			for (String functionId : fIds) {
@@ -28,7 +31,16 @@ public class RoleServiceImpl implements IRoleService {
 				role.getFunctions().add(function);
 			}
 		}
-
+	}
+	
+	/**
+	 * 分页查询
+	 */
+	public void pageQuery(PageBean pageBean) {
+		dao.pageQuery(pageBean);
 	}
 
+	public List<Role> findAll() {
+		return dao.findAll();
+	}
 }

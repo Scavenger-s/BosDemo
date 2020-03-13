@@ -64,7 +64,7 @@
 		<action name="workordermanageAction_*" class="workordermanageAction" method="{1}">
 		</action>
 		<!-- 权限管理 -->
-		<action name="functionAction_*" class="functionAction" method="{1}">
+		<action name="functionAction_*" class="com.cusx.bos.web.action.FunctionAction" method="{1}">
 			<result name="list">/WEB-INF/pages/admin/function.jsp</result>
 		</action>
 		<!-- 角色管理 -->
