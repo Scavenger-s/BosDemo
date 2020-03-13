@@ -28,7 +28,7 @@ public class FunctionAction extends BaseAction<Function>{
 	 */
 	public String listajax(){
 		List<Function> list = service.findAll();
-		this.java2Json(list, new String[]{"parentFunction","roles","children"});
+		this.java2Json(list, new String[]{"parentFunction","roles"});
 		return NONE;
 	}
 	
@@ -39,12 +39,23 @@ public class FunctionAction extends BaseAction<Function>{
 		service.save(model);
 		return LIST;
 	}
-	
+	/**
+	 * 分页查询
+	 * @return
+	 */
 	public String pageQuery(){
 		String page = model.getPage();
 		pageBean.setCurrentPage(Integer.parseInt(page));
 		service.pageQuery(pageBean);
 		this.java2Json(pageBean, new String[]{"parentFunction","roles","children"});
+		return NONE;
+	}
+	/**
+	 * 根据当期登录人查询对应的菜单,返回json
+	 */
+	public String findMenu() {
+		List<Function> list = service.findMenu();
+		this.java2Json(list, new String[]{"parentFunction","roles","children"});
 		return NONE;
 	}
 }
