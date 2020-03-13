@@ -21,6 +21,9 @@ public class Function implements java.io.Serializable {
 	private Integer zindex;
 	private Set roles = new HashSet(0);//当前权限对应的多个角色
 	private Set children = new HashSet(0);//当前权限的下级权限
+	public Function(String functionId) {
+		this.id = functionId;
+	}
 	public String getId() {
 		return id;
 	}

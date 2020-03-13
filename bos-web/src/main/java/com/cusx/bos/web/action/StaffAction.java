@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,7 @@ public class StaffAction extends BaseAction<Staff> {
 	 * 取派员批量删除
 	 * @return
 	 */
+	@RequiresPermissions("staff-delete")//执行这个方法需要staff-delete权限
 	public String deleteBatch() {
 		
 		staffService.deleteBatch(ids);
