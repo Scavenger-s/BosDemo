@@ -87,7 +87,7 @@
 				/validatecode.jsp* = anon
 				/login.jsp = anon
 				/userAction_login.action = anon
-				/page_base_staff.action = perms["staff-list"]
+				/page_base_staff.action = anon
 				/* = authc
 			</value>
 		</property>

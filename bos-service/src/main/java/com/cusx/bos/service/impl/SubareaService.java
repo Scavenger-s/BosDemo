@@ -55,4 +55,10 @@ public class SubareaService implements ISubareaService {
 		
 		return subareaDao.findByCriteria(detachedCriteria );
 	}
+
+	@Override
+	public List<Object> findSubareasGroupByProvince() {
+		
+		return subareaDao.findSubareasGroupByProvince();
+	}
 }

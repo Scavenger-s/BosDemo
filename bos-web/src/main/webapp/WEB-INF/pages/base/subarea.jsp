@@ -26,6 +26,8 @@
 <script
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script src="${pageContext.request.contextPath }/js/highcharts/highcharts.js"></script>
+<script src="${pageContext.request.contextPath }/js/highcharts/modules/exporting.js"></script>
 <script type="text/javascript">
 	function doAdd(){
 		$('#addSubareaWindow').window("open");
@@ -47,6 +49,7 @@
 	function doExport(){
 		//发送请求，请求Action，进行文件下载
 		window.location.href = "subareaAction_exportXls.action";
+		//$.post("subareaAction_exportXls.action");
 	}
 	
 	function doImport(){
@@ -84,7 +87,14 @@
 		text : '导出',
 		iconCls : 'icon-undo',
 		handler : doExport
-	}];
+	},
+	{
+		id : 'button-showHighcharts',
+		text : '显示区域分区分布图',
+		iconCls : 'icon-search',
+		handler : doShowHighcharts
+	}
+	];
 	// 定义列
 	var columns = [ [ {
 		field : 'id',
@@ -159,7 +169,7 @@
 			border : true,
 			rownumbers : true,
 			striped : true,
-			pageList: [1],
+			pageList: [10],
 			pagination : true,
 			toolbar : toolbar,
 			url : "subareaAction_pageQuery.action",
@@ -176,6 +186,15 @@
 	        shadow: true,
 	        closed: true,
 	        height: 400,
+	        resizable:false
+	    });
+		
+		$('#showSubareaWindow').window({
+	        width: 800,
+	        modal: true,
+	        shadow: true,
+	        closed: true,
+	        height: 700,
 	        resizable:false
 	    });
 		
@@ -222,6 +241,24 @@
 	function doDblClickRow(){
 		alert("双击表格数据...");
 	}
+	
+	function doShowHighcharts(){
+		$("#showSubareaWindow").window("open");
+		//页面加载完成后，动态创建图表
+		$.post("subareaAction_findSubareasGroupByProvince.action",function(data){
+			$("#test").highcharts({
+				title: {
+		            text: '区域分区分布图'
+		        },
+		        series: [{
+		            type: 'pie',
+		            name: '区域分区分布图',
+		            data: data
+		        }]
+			});
+		});
+	}
+	
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
@@ -320,6 +357,13 @@
 					</tr>
 				</table>
 			</form>
+		</div>
+	</div>
+	
+	<!-- 用于展示图表 -->
+	<div class="easyui-window" title="区域分区分布图" id="showSubareaWindow" 
+		collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
+		<div id="test"  split="false" border="false" >
 		</div>
 	</div>
 </body>

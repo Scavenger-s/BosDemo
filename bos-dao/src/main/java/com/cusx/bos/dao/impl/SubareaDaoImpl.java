@@ -13,6 +13,12 @@ import com.cusx.bos.utils.PageBean;
 @Repository
 public class SubareaDaoImpl extends  BaseDaoImpl<Subarea>  implements ISubareaDao {
 
+	@Override
+	public List<Object> findSubareasGroupByProvince() {
+		String hql = "SELECT r.province ,count(*) FROM Subarea s LEFT OUTER JOIN s.region r Group BY r.province";
+		return (List<Object>) this.getHibernateTemplate().find(hql);
+	}
+
 	
 
 }
