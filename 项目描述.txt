@@ -1,9 +1,0 @@
-本项目为物流项目二期开发
-本项目由maven构建，数据库为mysql
-数据库原型设计为powerdesigner
-本项目前台采用easyui、jquery
-后台采用ssh框架
-客户模块远程调用采用cxf框架
-项目现发布在github：https://github.com/Scavenger-s/BosDemo.git
-负责基本功能
-系统管理模块开发
