@@ -8,6 +8,7 @@
 * 前端采用easyui、jQuery
 * 后台采用ssh框架
 * 数据库为mysql
+* 客户数据采用cxf框架进行远程调用[crm]()
 * 本系统采用shiro框架进行权限控制
 * 数据可视化采用hchart框架
 ---
