@@ -23,4 +23,5 @@
 4. 初始化数据库数据：
    * 先运行项目中sql文件中初始化数据：auth_function.sql脚本
    * 请在user表中添加一个admin用户和密码以便初次登录，密码采用md5算法加密
+5. 将[crm项目](https://github.com/Scavenger-s/crm.git)clone到本地，将其和bos项目一起加入tomact下
 
