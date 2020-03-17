@@ -16,13 +16,13 @@
 # Quick Start
 1. 将项目clone到本地
 2. 关联上本地仓库
-   * 将bos-parent install 在需要相应的jar(如：bos-domain)包时加入
-3. 在数据库软件(如：navicat)中运行本项目中的sql文件中的脚本
+3. 将bos-parent install 在需要相应的jar(如：bos-domain)包时加入
+4. 在数据库软件(如：navicat)中运行本项目中的sql文件中的脚本
    顺序为：
    user.sql-->bos_bc.sql-->bos_qb.sql
    -->bos_qbv1.sql(注：运行过程中可能会出现外键冲突的情况，如出现请现将对应分外键删除，运行完sql脚本后再将外键加上)
-4. 初始化数据库数据：
+5. 初始化数据库数据：
    * 先运行项目中sql文件中初始化数据：auth_function.sql脚本
    * 请在user表中添加一个admin用户和密码以便初次登录，密码采用md5算法加密
-5. 将[crm项目](https://github.com/Scavenger-s/crm.git)clone到本地，将其和bos项目一起加入tomact下
+6. 将[crm项目](https://github.com/Scavenger-s/crm.git)clone到本地，将其和bos项目一起加入tomact下
 
