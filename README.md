@@ -13,6 +13,6 @@
 * 本系统采用`shiro`框架进行权限控制
 * 管理分区模块显示区域分区分布图功能数据可视化采用`hchart`框架
 ---
-#Quick Start
+# Quick Start
 1. 将项目clone到本地
 
