@@ -1,5 +1,6 @@
 
 # 物流管理系统
+[![weibo-logo]](http://weibo.com/linpiaochen)
 ### Introduction
 * 本项目为物流系统二次开发
 * 本项目部署在`linux centos7`上运行
