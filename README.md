@@ -16,6 +16,7 @@
 # Quick Start
 1. 将项目clone到本地
 2. 关联上本地仓库
+   * 将bos-parent install 在需要相应的jar(如：bos-domain)包时加入
 3. 在数据库软件(如：navicat)中运行本项目中的sql文件中的脚本
    顺序为：
    user.sql-->bos_bc.sql-->bos_qb.sql
