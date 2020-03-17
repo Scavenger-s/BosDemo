@@ -1,6 +1,6 @@
 
 # 物流管理系统
-### Introduction
+## Introduction
 * 本项目为物流系统二次开发
 * 本项目部署在`linux centos7`上运行
 * 本次开发了受理模块、基础档案模块
@@ -13,7 +13,7 @@
 * 本系统采用`shiro`框架进行权限控制
 * 管理分区模块显示区域分区分布图功能数据可视化采用`hchart`框架
 ---
-# Quick Start
+## Quick Start
 1. 将项目clone到本地
 2. 关联上本地仓库
 3. 将bos-parent install 在需要相应的jar(如：bos-domain)包时加入
