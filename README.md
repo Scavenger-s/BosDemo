@@ -18,5 +18,6 @@
 2. 关联上本地仓库
 3. 在数据库软件(如：navicat)中运行本项目中的sql脚本
    顺序为：
-   user.sql-->bos_bc.sql-->bos_qb.sql-->bos_qbv1.sql(注：运行过程中可能会出现外键冲突的情况，如出现请现将对应分外键删除，运行完sql脚本后再将    外键加上)
+   user.sql-->bos_bc.sql-->bos_qb.sql
+   -->bos_qbv1.sql(注：运行过程中可能会出现外键冲突的情况，如出现请现将对应分外键删除，运行完sql脚本后再将外键加上)
 
