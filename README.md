@@ -12,6 +12,7 @@
 * 客户数据采用`apache cxf`框架进行远程调用[crm项目](https://github.com/Scavenger-s/crm.git)
 * 本系统采用`shiro`框架进行权限控制
 * 管理分区模块显示区域分区分布图功能数据可视化采用`hchart`框架
+* 区域设置模块，导入功能，请导入项目中的区域导入测试数据(因格式已经写死故不支持其他类型的数据)
 ---
 ## Quick Start
 1. 将项目clone到本地
@@ -21,8 +22,9 @@
    顺序为：
    user.sql-->bos_bc.sql-->bos_qb.sql
    -->bos_qbv1.sql(注：运行过程中可能会出现外键冲突的情况，如出现请现将对应分外键删除，运行完sql脚本后再将外键加上)
-5. 初始化数据库数据：
+5. 修改bos-web/src/main/resources下的db.properties对应数据库设置
+6. 初始化数据库数据：
    * 先运行项目中sql文件中初始化数据：auth_function.sql脚本
    * 请在user表中添加一个admin用户和密码以便初次登录，密码采用md5算法加密
-6. 将[crm项目](https://github.com/Scavenger-s/crm.git)clone到本地，将其和bos项目一起加入tomact下
+7. 将[crm项目](https://github.com/Scavenger-s/crm.git)clone到本地，将其和bos项目一起加入tomact下
 
